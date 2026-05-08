@@ -56,7 +56,7 @@ if (method === 'POST') {
     }
 }
 
-//Elimino solo un producto en particular
+//Elimino un producto en particular
 if (method === 'DELETE' && endpoint.startsWith('productos/')) {
     console.log('Eliminando producto...');
 
