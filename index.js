@@ -1,12 +1,14 @@
-//const method = process.argv[2];
-//const endpoint = process.argv[3];
-
+//Utilizo Destructuring con process.argv para obtener el método, el endpoint y los argumentos de la línea de comandos.
 const [, , method, endpoint, ...args] = process.argv;
 
+//Muestro por pantalla el métod y el endpoint
 console.log(`Metodo: ${method}`);
 console.log (`Endpoint: ${endpoint}`);
 
+//NOTA: utilizo una API que creamos para el proyecto de React.
+
 //Muestro todos los productos.
+//npm start GET productos
 if (method === 'GET' && endpoint === 'productos') {
     console.log('Obteniendo productos...');
 
@@ -20,6 +22,7 @@ if (method === 'GET' && endpoint === 'productos') {
 }
 
 //Consulto solo un producto en particular
+//npm start GET productos/5
     //Separo el recurso del id
     const[recurso, id] = endpoint.split('/');
     
@@ -36,9 +39,7 @@ if (method === 'GET' && endpoint.startsWith('productos/')) {
 }
 
 //Inserto un registro
-    //Separo el recurso del id
-  //  const[recurso, id] = endpoint.split('/');
-    
+//npm start POST productos/"Rúcula & Crudo" 19.500 "Rúcula, jamón crudo, queso parmesano y aderezo de limón" "Especial"
 if (method === 'POST') {
     //Armo el objeto
     const producto = {'nombre': args[0], 'precio': args[1], 'descripcion': args[2], 'tipo': args[3]};
@@ -57,6 +58,7 @@ if (method === 'POST') {
 }
 
 //Elimino un producto en particular
+//npm start DELETE productos/8
 if (method === 'DELETE' && endpoint.startsWith('productos/')) {
     console.log('Eliminando producto...');
 
