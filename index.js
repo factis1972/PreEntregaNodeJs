@@ -8,12 +8,12 @@ console.log (`Endpoint: ${endpoint}`);
 //NOTA: utilizo una API que creamos para el proyecto de React.
 
 //Muestro todos los productos.
-//npm start GET productos
-if (method === 'GET' && endpoint === 'productos') {
+//npm start GET products
+if (method === 'GET' && endpoint === 'products') {
     console.log('Obteniendo productos...');
 
     try {
-        const response = await fetch('https://69162780a7a34288a27c82d0.mockapi.io/api/Productos');
+        const response = await fetch("https://fakestoreapi.com/products");
         const data = await response.json();
         console.log(data);
     } catch (error) {
@@ -22,30 +22,30 @@ if (method === 'GET' && endpoint === 'productos') {
 }
 
 //Consulto solo un producto en particular
-//npm start GET productos/5
+//npm start GET products/5
     //Separo el recurso del id
     const[recurso, id] = endpoint.split('/');
     
-if (method === 'GET' && endpoint.startsWith('productos/')) {
-    console.log('Obteniendo productos...');
+if (method === 'GET' && endpoint.startsWith('products/')) {
+    console.log('Obteniendo producto...');
 
     try {
-        const response = await fetch(`https://69162780a7a34288a27c82d0.mockapi.io/api/Productos/${id}`);
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
         const data = await response.json();
         console.log(data);
     } catch (error) {
-        console.error('Error al obtener productos:', error);
+        console.error('Error al obtener producto:', error);
     }
 }
 
 //Inserto un registro
-//npm start POST productos/"Rúcula & Crudo" 19.500 "Rúcula, jamón crudo, queso parmesano y aderezo de limón" "Especial"
+//npm start POST products/"Short Fútbol AFA" 125600 "Nuevo lanzamiento especial Mundial 2026" "Deporte" "http://example.com"
 if (method === 'POST') {
     //Armo el objeto
-    const producto = {'nombre': args[0], 'precio': args[1], 'descripcion': args[2], 'tipo': args[3]};
+    const producto = {'title': args[0], 'price': args[1], 'description': args[2], 'category': args[3], 'image': args[4]};
 //    console.log(producto);
      try {
-        fetch('https://69162780a7a34288a27c82d0.mockapi.io/api/Productos', {
+        fetch("https://fakestoreapi.com/products", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(producto),
@@ -59,11 +59,11 @@ if (method === 'POST') {
 
 //Elimino un producto en particular
 //npm start DELETE productos/8
-if (method === 'DELETE' && endpoint.startsWith('productos/')) {
+if (method === 'DELETE' && endpoint.startsWith('products/')) {
     console.log('Eliminando producto...');
 
     try {
-        const response = await fetch(`https://69162780a7a34288a27c82d0.mockapi.io/api/Productos/${id}`, {
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`, {
             method: 'DELETE'
         });
         const data = await response.json();
