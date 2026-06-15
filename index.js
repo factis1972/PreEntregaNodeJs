@@ -39,8 +39,8 @@ if (method === 'GET' && endpoint.startsWith('products/')) {
 }
 
 //Inserto un registro
-//npm start POST products/"Short Fútbol AFA" 125600 "Nuevo lanzamiento especial Mundial 2026" "Deporte" "http://example.com"
-if (method === 'POST') {
+//npm start POST products "ShortFutbolAFA" "125600" "Nuevo lanzamiento especial Mundial 2026" "Deporte" "http://example.com"
+if (method === 'POST' && endpoint === 'products') {
     //Armo el objeto
     const producto = {'title': args[0], 'price': args[1], 'description': args[2], 'category': args[3], 'image': args[4]};
 //    console.log(producto);
@@ -58,7 +58,7 @@ if (method === 'POST') {
 }
 
 //Elimino un producto en particular
-//npm start DELETE productos/8
+//npm start DELETE products/8
 if (method === 'DELETE' && endpoint.startsWith('products/')) {
     console.log('Eliminando producto...');
 
